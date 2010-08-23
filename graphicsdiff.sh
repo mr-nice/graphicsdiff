@@ -43,11 +43,8 @@ done
 
 #Use meld for any kind of ASCII files, compare for images and hexdump with meld 
 #for unsupported filetypes
-#FIXME: find a better solution to determine if a file is ASCII or binary.
-#FIXME: Shell scripts are currently not detected as ASCII
-
-if [ -n "$(file $OLD_FILE | grep  ASCII)" -a \
-     -n "$(file $NEW_FILE | grep  ASCII)" ] ; then
+if [ -n "$(file -i "$OLD_FILE" | grep text)" -a \
+     -n "$(file -i "$NEW_FILE" | grep text)" ] ; then
     echo "ASCII detected calling meld..."
     meld $OLD_FILE $NEW_FILE
 else
