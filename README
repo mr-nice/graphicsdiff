@@ -1,0 +1,10 @@
+Graphicsdiff is a git diff wrapper for artists to visible diff images. It utilises compare and has a graphical fallback for ASCII and binary files which uses meld and hexdump.
+
+The easiest way to use it is to overwrite the global config with
+git config --global diff.external /path/to/graphicsdiff/graphicsdiff.sh
+
+More advanced users of git can also use git-difftool [1]
+
+Have fun :)
+
+1 http://www.kernel.org/pub/software/scm/git/docs/git-difftool.html
