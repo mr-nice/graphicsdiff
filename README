@@ -1,4 +1,4 @@
-Graphicsdiff is a git diff wrapper for artists to visible diff images. It utilises compare and has a graphical fallback for ASCII and binary files which uses meld and hexdump.
+Graphicsdiff is a git diff wrapper for artists that visualizes differences between images. It utilises imagemagick's compare and has a graphical fallback for ASCII and binary files which uses meld and hexdump.
 
 The easiest way to use it is to overwrite the global config with
 git config --global diff.external /path/to/graphicsdiff/graphicsdiff.sh
