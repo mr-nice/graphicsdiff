@@ -2,12 +2,11 @@
 #==VAR==========================================================================
 OLD_FILE=$2
 NEW_FILE=$5
-TMP_RANDOM=$(pwgen 50 1)
-COMPARE_TMP_FILE=/tmp/graphixdiff.$TMP_RANDOM
-XCF_2_PNG_TMP_OLD_FILE=/tmp/graphixdiff.$TMP_RANDOM.old.png
-XCF_2_PNG_TMP_NEW_FILE=/tmp/graphixdiff.$TMP_RANDOM.new.png
-HEXDUMP_TMP_OLD_FILE=/tmp/graphixdiff.$TMP_RANDOM.old.hex
-HEXDUMP_TMP_NEW_FILE=/tmp/graphixdiff.$TMP_RANDOM.new.hex
+COMPARE_TMP_FILE=/tmp/gd_${OLD_FILE##*/}_${NEW_FILE##*/}
+XCF_2_PNG_TMP_OLD_FILE=/tmp/gd_${OLD_FILE##*/}.png
+XCF_2_PNG_TMP_NEW_FILE=/tmp/gd_${NEW_FILE##*/}.png
+HEXDUMP_TMP_OLD_FILE=/tmp/gd_${OLD_FILE##*/}.hex
+HEXDUMP_TMP_NEW_FILE=/tmp/gd_${NEW_FILE##*/}.hex
 
 #==FUNCTIONS====================================================================
 function compareimage {
