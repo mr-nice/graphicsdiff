@@ -1,0 +1,29 @@
+diff -Nur qgit.vanilla/src/mainimpl.cpp qgit/src/mainimpl.cpp
+--- qgit.vanilla/src/mainimpl.cpp	2009-03-12 18:12:56.000000000 +0100
++++ qgit/src/mainimpl.cpp	2010-08-25 05:17:48.236596202 +0200
+@@ -271,12 +271,23 @@
+ 	QByteArray fileContent;
+ 	QString fileSha(git->getFileSha(rv->st.fileName(), rv->st.sha()));
+ 	git->getFile(fileSha, NULL, &fileContent, rv->st.fileName());
+-	if (!writeToFile(fName1, QString(fileContent)))
++
++	bool retWriteToFile=false;
++	if (git->isBinaryFile(rv->st.fileName()))
++		retWriteToFile=writeToFile(fName1, fileContent);
++	else
++		retWriteToFile=writeToFile(fName1, QString(fileContent));
++	if(!retWriteToFile)
+ 		statusBar()->showMessage("Unable to save " + fName1);
+ 
+ 	fileSha = git->getFileSha(rv->st.fileName(), prevRevSha);
+ 	git->getFile(fileSha, NULL, &fileContent, rv->st.fileName());
+-	if (!writeToFile(fName2, QString(fileContent)))
++
++	if (git->isBinaryFile(rv->st.fileName()))
++		retWriteToFile=writeToFile(fName2, fileContent);
++	else
++		retWriteToFile=writeToFile(fName2, QString(fileContent));
++	if(!retWriteToFile)
+ 		statusBar()->showMessage("Unable to save " + fName2);
+ 
+ 	// get external diff viewer command

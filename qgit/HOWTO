@@ -1,0 +1,20 @@
+sudo apt-get build-dep qgit
+wget http://downloads.sourceforge.net/project/qgit/qgit4/2.3/qgit-2.3.tar.bz2
+tar -xjvf qgit-2.3.tar.bz2
+cd qgit
+cat /path/to/qgit-2.3_fix_external_diff_binary_writeToFile.patch | patch -p1
+qmake qgit.pro
+make
+sudo make install
+
+start qgit
+Edit->Settings->External diff tool
+/path/to/graphicsdiff/graphicsdiff.sh arg1 %1 arg3 arg4 %2
+->OK
+
+Now you need to toggle to tree view (press t or View->Toggle tree view).
+Select a file and double click on it to change the filter of qgit.
+Start external diff with ctrl-d or View->External diff
+
+Have fun!
+
