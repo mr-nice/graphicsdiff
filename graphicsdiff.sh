@@ -2,7 +2,7 @@
 #==VAR==========================================================================
 OLD_FILE=$2
 NEW_FILE=$5
-COMPARE_TMP_FILE=/tmp/gd_${OLD_FILE##*/}_${NEW_FILE##*/}
+COMPARE_TMP_FILE=/tmp/gd_${OLD_FILE##*/}_${NEW_FILE##*/}_
 XCF_2_PNG_TMP_OLD_FILE=/tmp/gd_${OLD_FILE##*/}.png
 XCF_2_PNG_TMP_NEW_FILE=/tmp/gd_${NEW_FILE##*/}.png
 HEXDUMP_TMP_OLD_FILE=/tmp/gd_${OLD_FILE##*/}.hex
@@ -42,7 +42,7 @@ done
 
 #Use meld for any kind of ASCII files, compare for images and hexdump with meld 
 #for unsupported filetypes
-if [ -n "$(file -i "$OLD_FILE" | grep text)" -a \
+if [ -n "$(file -i "$OLD_FILE" | grep text)" -o \
      -n "$(file -i "$NEW_FILE" | grep text)" ] ; then
     echo "ASCII detected calling meld..."
     meld $OLD_FILE $NEW_FILE
